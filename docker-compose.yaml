@@ -1,11 +1,10 @@
 version: '3.8'
 services:
-  app:
+  web:
     build: .
     image: fpland-frontend
     volumes:
       - .:/app
       - /app/node_modules
     ports:
-      - 5173:5173
-    command: npm run dev
+      - "5173:5173"

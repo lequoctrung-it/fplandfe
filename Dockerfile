@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of your app's source code
 COPY . .
 
-# Expose port 5173 for the app
+# Expose port 5173 for the Vue app
 EXPOSE 5173
 
-# Run the application in development mode with hot-reloading enabled
-CMD ["npm", "run", "serve"]
+## Run the application in development mode with hot-reloading enabled
+CMD ["npm", "run", "dev"]

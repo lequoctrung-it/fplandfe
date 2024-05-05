@@ -4,15 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite & mocker ./mocker/index.cjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api": "mocker ./mocker/index.cjs"
   },
   "dependencies": {
     "vue": "^3.4.21"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
+    "mocker-api": "^2.9.10",
     "vite": "^5.2.8"
+  },
+  "mocker": {
+    "port": 7788
   }
 }

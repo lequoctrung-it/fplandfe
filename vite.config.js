@@ -15,14 +15,27 @@ export default defineConfig({
   },
   server: {
     host: true,
-    // port: 5173,
-    // hmr: {
-    //   host: "0.0.0.0",
-    //   clientPort: 5173
-    // }
     watch: {
       usePolling: true,
       interval: 500
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:7788',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\//, ''),
+        configure: (proxy, _options) => {
+          proxy.on('error', (err, _req, _res) => {
+            console.log('proxy error', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, _res) => {
+            console.log('Sending Request to the Target:', req.method, req.url);
+          });
+          proxy.on('proxyRes', (proxyRes, req, _res) => {
+            console.log('Received Response from the Target:', proxyRes.statusCode, req.url);
+          });
+        },
+      }
     }
-  }
+  },
 })

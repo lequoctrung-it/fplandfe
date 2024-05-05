@@ -1,6 +1,27 @@
-<script setup>
+<script>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+
+export default {
+  components: {
+    HelloWorld,
+    TheWelcome
+  },
+  data() {
+    return {
+      msg: ''
+    }
+  },
+  mounted() {
+    console.log('App mounted!')
+    fetch('/api/hello')
+      .then(response => response.json())
+      .then(json => {
+        this.msg = `Hello ${json?.name}`
+        console.log(this.msg)
+      })
+  }
+}
 </script>
 
 <template>
@@ -8,7 +29,7 @@ import TheWelcome from './components/TheWelcome.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="Hi did it!" />
+      <HelloWorld :msg="msg" />
     </div>
   </header>
 
