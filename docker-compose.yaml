@@ -1,7 +1,9 @@
 version: '3.8'
 services:
   web:
-    build: .
+    build:
+        context: .
+        dockerfile: docker/production.Dockerfile.dev
     image: fpland-frontend
     volumes:
       - .:/app
