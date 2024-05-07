@@ -19,6 +19,9 @@ RUN npm run build
 # Start a new stage
 FROM nginx:stable-alpine as production-stage
 
+# Copy the custom nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Copy the built app to nginx server root directory
 COPY --from=build-stage ../app/dist /usr/share/nginx/html
 
