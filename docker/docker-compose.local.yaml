@@ -2,11 +2,11 @@ version: '3.8'
 services:
   web:
     build:
-      context: .
+      context: ..
       dockerfile: docker/local.Dockerfile
-    image: fpland-frontend
+    image: fpland-frontend:latest
     volumes:
-      - .:/app
+      - ..:/app
       - /app/node_modules
     ports:
       - "5173:5173"

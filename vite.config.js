@@ -21,7 +21,7 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'http://localhost:8000', // This should be changed to match backend server (same as in nginx.conf)
+        target: 'http://localhost:7788', // Seem like this only work on dev image
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\//, ''),
         configure: (proxy, _options) => {

@@ -1,0 +1,16 @@
+# Ignore Git and other VCS directories
+.git
+.gitignore
+
+# Ignore all markdown files (README etc)
+*.md
+
+# Dependency directories
+node_modules/
+
+# IDE / Editor folders
+.idea
+.vscode
+*.iml
+
+dist/
